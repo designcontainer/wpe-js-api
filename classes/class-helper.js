@@ -24,14 +24,4 @@ module.exports = class Helper {
 		queries = `?${querystring.encode(queries)}`;
 		return names + queries;
 	};
-
-	objectToFlags = (args) => {
-		let flagsString = '';
-		for (const [key, value] of Object.entries(args)) {
-			let formattedKey = key.replace('_', '-');
-			let prefix = key.length === 1 ? '-' : '--';
-			flagsString += `${prefix}${formattedKey}=${value} `;
-		}
-		return flagsString;
-	};
 };
