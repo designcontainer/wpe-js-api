@@ -1,6 +1,6 @@
 import querystring from 'querystring';
 
-module.exports = class Helper {
+class Helper {
 	constructor() {}
 
 	isObject = (arg) => {
@@ -25,3 +25,5 @@ module.exports = class Helper {
 		return names + queries;
 	};
 };
+
+export default Helper;
