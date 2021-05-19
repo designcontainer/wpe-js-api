@@ -1,4 +1,4 @@
-const querystring = require('querystring');
+import querystring from 'querystring';
 
 module.exports = class Helper {
 	constructor() {}

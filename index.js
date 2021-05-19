@@ -1,11 +1,14 @@
 // Import external deps
-const axios = require('axios');
+import axios from 'axios';
 
 // Import internal deps
-const Helper = require('./classes/class-helper');
+import Helper from './classes/class-helper'
 
-module.exports = class WpeApi {
-	constructor() {}
+class WpeApi {
+	constructor(user, pass) {
+		this.user = user;
+		this.pass = pass;
+	}
 
 	installDomains = async (id) => {
 		const domainsObj = await this.getWpeApi('installs', id, 'domains');
@@ -32,10 +35,7 @@ module.exports = class WpeApi {
 		const optionAxios = {
 			headers: {
 				Authorization:
-					'Basic ' +
-					Buffer.from(
-						process.env.WPE_API_USER + ':' + process.env.WPE_API_PASS
-					).toString('base64'),
+					'Basic ' + Buffer.from(this.user + ':' + this.pass).toString('base64'),
 			},
 		};
 
@@ -47,3 +47,5 @@ module.exports = class WpeApi {
 			});
 	};
 };
+
+export default WpeApi
