@@ -2,15 +2,53 @@
 import axios from 'axios';
 
 // Import internal deps
-import Helper from './classes/class-helper.js'
+import Helper from './classes/class-helper.js';
 
+/**
+ * Class for communicating with the WP Engine API using JavaScript.
+ *
+ * @param {string} user The WP Engine API User.
+ * @param {string} pass The WP Engine API Password/key.
+ */
 class WpeApi {
 	constructor(user, pass) {
 		this.user = user;
 		this.pass = pass;
 	}
 
-	installDomains = async (id) => {
+	/**
+	 * Get WP Engine install ID by name.
+	 *
+	 * @param {string} name The WP Engine install Name.
+	 * @return {string} Returns the WP Engine install ID.
+	 */
+	id = async (name) => {
+		const data = await this.getWpeApi('installs', { limit: 1000 });
+		const installs = data.results;
+		const install = installs.find((installObj) => {
+			return installObj.name === name;
+		});
+		return install['id'];
+	};
+
+	/**
+	 * Get WP Engine install name by ID.
+	 *
+	 * @param {string} id The WP Engine install ID.
+	 * @return {string} Returns the WP Engine install name.
+	 */
+	name = async (id) => {
+		const res = await this.getWpeApi('installs', id);
+		return res['name'];
+	};
+
+	/**
+	 * Get WP Engine install domains by ID.
+	 *
+	 * @param {string} id The WP Engine install ID.
+	 * @return {array} Returns the WP Engine install domains.
+	 */
+	domains = async (id) => {
 		const domainsObj = await this.getWpeApi('installs', id, 'domains');
 		const domains = domainsObj.results.map((item) => {
 			return item['name'];
@@ -18,18 +56,80 @@ class WpeApi {
 		return domains;
 	};
 
+	/**
+	 * Get the PHP version of the WP Engine install.
+	 *
+	 * @param {string} id The WP Engine install ID.
+	 * @return {string} Returns the PHP version of the WP Engine install.
+	 */
+	phpVersion = async (id) => {
+		const res = await this.getWpeApi('installs', id);
+		return res['php_version'];
+	};
+
+	/**
+	 * Get the status of the WP Engine install.
+	 *
+	 * @param {string} id The WP Engine install ID.
+	 * @return {string} Returns the status of the WP Engine install.
+	 */
+	status = async (id) => {
+		const res = await this.getWpeApi('installs', id);
+		return res['status'];
+	};
+
+	/**
+	 * Get the CNAME of the WP Engine install.
+	 *
+	 * @param {string} id The WP Engine install ID.
+	 * @return {string} Returns the CNAME of the WP Engine install.
+	 */
+	cname = async (id) => {
+		const res = await this.getWpeApi('installs', id);
+		return res['cname'];
+	};
+
+	/**
+	 * Get the WP Engine install environment.
+	 *
+	 * @param {string} id The WP Engine install ID.
+	 * @return {string} Returns the WP Engine install environment.
+	 */
+	environment = async (id) => {
+		const res = await this.getWpeApi('installs', id);
+		return res['environment'];
+	};
+
+	/**
+	 * Get WP Engine primary install domain by ID.
+	 *
+	 * @param {string} id The WP Engine install ID.
+	 * @return {string} Returns the WP Engine install primary domain.
+	 */
 	primaryDomain = async (id) => {
 		const res = await this.getWpeApi('installs', id);
 		return res['primary_domain'];
 	};
 
+	/**
+	 * Check if WP Engine install is a multisite environment.
+	 *
+	 * @param {string} id The WP Engine install ID.
+	 * @return {bool} Returns boolean true/false depending on if install is a multisite environment.
+	 */
 	isMultisite = async (id) => {
 		const res = await this.getWpeApi('installs', id);
 		return res['is_multisite'];
 	};
 
+	/**
+	 * Get custom WP Engine data
+	 *
+	 * @param {any} args Api arguments. Docs: https://wpengineapi.com
+	 * @return {array} Returns api data.
+	 */
 	getWpeApi = async (...args) => {
-		args = await new Helper().handleApiArgs(args);
+		args = new Helper().handleApiArgs(args);
 		const urlAxios = `https://api.wpengineapi.com/v1/${args}`;
 
 		const optionAxios = {
@@ -39,13 +139,13 @@ class WpeApi {
 			},
 		};
 
-		return axios
+		return await axios
 			.get(urlAxios, optionAxios)
 			.then((res) => res.data)
 			.catch((error) => {
 				throw new Error(error);
 			});
 	};
-};
+}
 
-export default WpeApi
+export default WpeApi;
