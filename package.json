@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/designcontainer/wpe-js-api.git"
+    "url": "git+https://github.com/designcontainer/wpe-js-api.git#8221c855ef1bc335018bd8d2a7e05f48899ffd3a"
   },
   "keywords": [],
   "author": "",

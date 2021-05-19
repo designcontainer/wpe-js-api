@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Import internal deps
-import Helper from './classes/class-helper'
+import Helper from './classes/class-helper.js'
 
 class WpeApi {
 	constructor(user, pass) {
