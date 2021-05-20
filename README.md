@@ -1,6 +1,6 @@
 # JavaScript wrapper for the WP Engine API
 
-A simple JavaScript wrappe for getting data from your WP Engine installs using their API.
+A simple JavaScript wrapper for getting data from your WP Engine installs using their API.
 
 ## Installing
 
