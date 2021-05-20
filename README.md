@@ -23,6 +23,8 @@ import WpeApi from 'dc-wpe-js-api';
 -   `user` **{String}**: The WP Engine API User.
 -   `pass` **{String}**: The WP Engine API Password/key.
 
+You should put these variables in a .ENV file!
+
 ```js
 const wpe = new WpeApi(user, pass);
 ```
