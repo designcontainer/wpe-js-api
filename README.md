@@ -18,6 +18,11 @@ import WpeApi from 'dc-wpe-js-api';
 
 ## Initialize constructor
 
+**Params**
+
+-   `user` **{String}**: The WP Engine API User.
+-   `pass` **{String}**: The WP Engine API Password/key.
+
 ```js
 const wpe = new WpeApi(user, pass);
 ```
