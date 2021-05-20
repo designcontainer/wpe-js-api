@@ -60,7 +60,8 @@ Get WP Engine install domains by `id`.
 
 -   `id` **{String}**: The WP Engine install ID.
 -   `returns` **{Array}**: Returns the WP Engine install domains.
-    **Example**
+
+**Example**
 
 ```js
 wpe.domains(id);
@@ -74,7 +75,8 @@ Get the PHP version of the WP Engine install by `id`.
 
 -   `id` **{String}**: The WP Engine install ID.
 -   `returns` **{String}**: Returns the PHP version of the WP Engine install.
-    **Example**
+
+**Example**
 
 ```js
 wpe.phpVersion(id);
@@ -88,7 +90,8 @@ Get the status of the WP Engine install by `id`.
 
 -   `id` **{String}**: The WP Engine install ID.
 -   `returns` **{String}**: Returns the status of the WP Engine install.
-    **Example**
+
+**Example**
 
 ```js
 wpe.status(id);
@@ -102,7 +105,8 @@ wpe.status(id);
 
 -   `id` **{String}**: The WP Engine install ID.
 -   `returns` **{String}**: Returns the CNAME of the WP Engine install.
-    **Example**
+
+**Example**
 
 ```js
 wpe.cname(id);
@@ -116,7 +120,8 @@ wpe.cname(id);
 
 -   `id` **{String}**: The WP Engine install ID.
 -   `returns` **{String}**: Returns the WP Engine install environment.
-    **Example**
+
+**Example**
 
 ```js
 wpe.environment(id);
@@ -130,7 +135,8 @@ wpe.environment(id);
 
 -   `id` **{String}**: The WP Engine install ID.
 -   `returns` **{String}**: Returns the WP Engine install primary domain.
-    **Example**
+
+**Example**
 
 ```js
 wpe.primaryDomain(id);
@@ -144,13 +150,14 @@ wpe.primaryDomain(id);
 
 -   `id` **{String}**: The WP Engine install ID.
 -   `returns` **{Boolean}**: Returns boolean true/false depending on if install is a multisite environment.
-    **Example**
+
+**Example**
 
 ```js
 wpe.isMultisite(id);
 ```
 
-### [.isMultisite](index.js#L120)
+### [.getWpeApi](index.js#L131)
 
      *  Get custom WP Engine data.
 
@@ -158,7 +165,8 @@ wpe.isMultisite(id);
 
 -   `...args` **{Any}**: Api arguments. Docs: https://wpengineapi.com.
 -   `returns` **{Array}**: Returns api data.
-    **Examples**
+
+**Examples**
 
 ```js
 wpe.getWpeApi('installs', { limit: 10 })
