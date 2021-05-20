@@ -101,7 +101,7 @@ wpe.status(id);
 
 ### [.cname](index.js#L87)
 
-     * Get the CNAME of the WP Engine install by `id`.
+Get the CNAME of the WP Engine install by `id`.
 
 **Params**
 
@@ -116,7 +116,7 @@ wpe.cname(id);
 
 ### [.environment](index.js#L98)
 
-     *  Get the WP Engine install environment by `id`.
+Get the WP Engine install environment by `id`.
 
 **Params**
 
@@ -131,7 +131,7 @@ wpe.environment(id);
 
 ### [.primaryDomain](index.js#L109)
 
-     *  Get WP Engine primary install domain by `id`.
+Get WP Engine primary install domain by `id`.
 
 **Params**
 
@@ -146,7 +146,7 @@ wpe.primaryDomain(id);
 
 ### [.isMultisite](index.js#L120)
 
-     *  Check if WP Engine install is a multisite environment by `id`.
+Check if WP Engine install is a multisite environment by `id`.
 
 **Params**
 
@@ -161,7 +161,7 @@ wpe.isMultisite(id);
 
 ### [.getWpeApi](index.js#L131)
 
-     *  Get custom WP Engine data.
+Get custom WP Engine data.
 
 **Params**
 
