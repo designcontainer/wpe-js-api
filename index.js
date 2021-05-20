@@ -57,7 +57,7 @@ class WpeApi {
 	};
 
 	/**
-	 * Get the PHP version of the WP Engine install.
+	 * Get the PHP version of the WP Engine install by ID.
 	 *
 	 * @param {string} id The WP Engine install ID.
 	 * @return {string} Returns the PHP version of the WP Engine install.
@@ -68,7 +68,7 @@ class WpeApi {
 	};
 
 	/**
-	 * Get the status of the WP Engine install.
+	 * Get the status of the WP Engine install by ID.
 	 *
 	 * @param {string} id The WP Engine install ID.
 	 * @return {string} Returns the status of the WP Engine install.
@@ -79,7 +79,7 @@ class WpeApi {
 	};
 
 	/**
-	 * Get the CNAME of the WP Engine install.
+	 * Get the CNAME of the WP Engine install by ID.
 	 *
 	 * @param {string} id The WP Engine install ID.
 	 * @return {string} Returns the CNAME of the WP Engine install.
@@ -90,7 +90,7 @@ class WpeApi {
 	};
 
 	/**
-	 * Get the WP Engine install environment.
+	 * Get the WP Engine install environment by ID.
 	 *
 	 * @param {string} id The WP Engine install ID.
 	 * @return {string} Returns the WP Engine install environment.
@@ -112,7 +112,7 @@ class WpeApi {
 	};
 
 	/**
-	 * Check if WP Engine install is a multisite environment.
+	 * Check if WP Engine install is a multisite environment by ID.
 	 *
 	 * @param {string} id The WP Engine install ID.
 	 * @return {bool} Returns boolean true/false depending on if install is a multisite environment.
@@ -123,9 +123,9 @@ class WpeApi {
 	};
 
 	/**
-	 * Get custom WP Engine data
+	 * Get custom WP Engine data.
 	 *
-	 * @param {any} args Api arguments. Docs: https://wpengineapi.com
+	 * @param {any} args Api arguments. Docs: https://wpengineapi.com.
 	 * @return {array} Returns api data.
 	 */
 	getWpeApi = async (...args) => {
