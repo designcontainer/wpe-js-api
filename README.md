@@ -7,7 +7,7 @@ A simple JavaScript wrapper for getting data from your WP Engine installs using 
 Using npm (coming soon):
 
 ```bash
-$ npm install axios
+$ npm install dc-wpe-js-api
 ```
 
 ## Import
