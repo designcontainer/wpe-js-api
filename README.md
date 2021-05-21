@@ -31,142 +31,7 @@ const wpe = new WpeApi(user, pass);
 
 ## API
 
-### [.id](index.js#L25)
-
-Get WP Engine install ID by `name`.
-
-**Params**
-
--   `name` **{String}**: The WP Engine install Name.
--   `returns` **{String}**: Returns the WP Engine install ID.
-
-**Example**
-
-```js
-wpe.id(name);
-```
-
-### [.name](index.js#L40)
-
-Get WP Engine install name by `id`.
-
-**Params**
-
--   `id` **{String}**: The WP Engine install ID.
--   `returns` **{String}**: Returns the WP Engine install name.
-
-**Example**
-
-```js
-wpe.name(id);
-```
-
-### [.domains](index.js#L51)
-
-Get WP Engine install domains by `id`.
-
-**Params**
-
--   `id` **{String}**: The WP Engine install ID.
--   `returns` **{Array}**: Returns the WP Engine install domains.
-
-**Example**
-
-```js
-wpe.domains(id);
-```
-
-### [.phpVersion](index.js#L65)
-
-Get the PHP version of the WP Engine install by `id`.
-
-**Params**
-
--   `id` **{String}**: The WP Engine install ID.
--   `returns` **{String}**: Returns the PHP version of the WP Engine install.
-
-**Example**
-
-```js
-wpe.phpVersion(id);
-```
-
-### [.status](index.js#L76)
-
-Get the status of the WP Engine install by `id`.
-
-**Params**
-
--   `id` **{String}**: The WP Engine install ID.
--   `returns` **{String}**: Returns the status of the WP Engine install.
-
-**Example**
-
-```js
-wpe.status(id);
-```
-
-### [.cname](index.js#L87)
-
-Get the CNAME of the WP Engine install by `id`.
-
-**Params**
-
--   `id` **{String}**: The WP Engine install ID.
--   `returns` **{String}**: Returns the CNAME of the WP Engine install.
-
-**Example**
-
-```js
-wpe.cname(id);
-```
-
-### [.environment](index.js#L98)
-
-Get the WP Engine install environment by `id`.
-
-**Params**
-
--   `id` **{String}**: The WP Engine install ID.
--   `returns` **{String}**: Returns the WP Engine install environment.
-
-**Example**
-
-```js
-wpe.environment(id);
-```
-
-### [.primaryDomain](index.js#L109)
-
-Get WP Engine primary install domain by `id`.
-
-**Params**
-
--   `id` **{String}**: The WP Engine install ID.
--   `returns` **{String}**: Returns the WP Engine install primary domain.
-
-**Example**
-
-```js
-wpe.primaryDomain(id);
-```
-
-### [.isMultisite](index.js#L120)
-
-Check if WP Engine install is a multisite environment by `id`.
-
-**Params**
-
--   `id` **{String}**: The WP Engine install ID.
--   `returns` **{Boolean}**: Returns boolean true/false depending on if install is a multisite environment.
-
-**Example**
-
-```js
-wpe.isMultisite(id);
-```
-
-### [.getWpeApi](index.js#L131)
+.getWpeApi
 
 Get custom WP Engine data.
 
@@ -191,4 +56,139 @@ wpe.getWpeApi('installs', id, 'domains')
 		console.log(res);
 	})
 	.catch((err) => console.error(`Error: ${err}`));
+```
+
+.id
+
+Get WP Engine install ID by `name`.
+
+**Params**
+
+-   `name` **{String}**: The WP Engine install Name.
+-   `returns` **{String}**: Returns the WP Engine install ID.
+
+**Example**
+
+```js
+wpe.id(name);
+```
+
+.name
+
+Get WP Engine install name by `id`.
+
+**Params**
+
+-   `id` **{String}**: The WP Engine install ID.
+-   `returns` **{String}**: Returns the WP Engine install name.
+
+**Example**
+
+```js
+wpe.name(id);
+```
+
+.domains
+
+Get WP Engine install domains by `id`.
+
+**Params**
+
+-   `id` **{String}**: The WP Engine install ID.
+-   `returns` **{Array}**: Returns the WP Engine install domains.
+
+**Example**
+
+```js
+wpe.domains(id);
+```
+
+.phpVersion
+
+Get the PHP version of the WP Engine install by `id`.
+
+**Params**
+
+-   `id` **{String}**: The WP Engine install ID.
+-   `returns` **{String}**: Returns the PHP version of the WP Engine install.
+
+**Example**
+
+```js
+wpe.phpVersion(id);
+```
+
+.status
+
+Get the status of the WP Engine install by `id`.
+
+**Params**
+
+-   `id` **{String}**: The WP Engine install ID.
+-   `returns` **{String}**: Returns the status of the WP Engine install.
+
+**Example**
+
+```js
+wpe.status(id);
+```
+
+.cname
+
+Get the CNAME of the WP Engine install by `id`.
+
+**Params**
+
+-   `id` **{String}**: The WP Engine install ID.
+-   `returns` **{String}**: Returns the CNAME of the WP Engine install.
+
+**Example**
+
+```js
+wpe.cname(id);
+```
+
+.environment
+
+Get the WP Engine install environment by `id`.
+
+**Params**
+
+-   `id` **{String}**: The WP Engine install ID.
+-   `returns` **{String}**: Returns the WP Engine install environment.
+
+**Example**
+
+```js
+wpe.environment(id);
+```
+
+.primaryDomain
+
+Get WP Engine primary install domain by `id`.
+
+**Params**
+
+-   `id` **{String}**: The WP Engine install ID.
+-   `returns` **{String}**: Returns the WP Engine install primary domain.
+
+**Example**
+
+```js
+wpe.primaryDomain(id);
+```
+
+.isMultisite
+
+Check if WP Engine install is a multisite environment by `id`.
+
+**Params**
+
+-   `id` **{String}**: The WP Engine install ID.
+-   `returns` **{Boolean}**: Returns boolean true/false depending on if install is a multisite environment.
+
+**Example**
+
+```js
+wpe.isMultisite(id);
 ```

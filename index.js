@@ -17,6 +17,56 @@ class WpeApi {
 	}
 
 	/**
+	 * Get custom WP Engine data.
+	 *
+	 * @param {any} args Api arguments. Docs: https://wpengineapi.com.
+	 * @return {array} Returns api data.
+	 */
+	getWpeApi = async (...args) => {
+		args = new Helper().handleApiArgs(args);
+		const urlAxios = `https://api.wpengineapi.com/v1/${args}`;
+
+		const optionAxios = {
+			headers: {
+				Authorization:
+					'Basic ' + Buffer.from(this.user + ':' + this.pass).toString('base64'),
+			},
+		};
+
+		return await axios
+			.get(urlAxios, optionAxios)
+			.then((res) => res.data)
+			.catch((error) => {
+				throw new Error(error);
+			});
+	};
+
+	/**
+	 * Post custom WP Engine data.
+	 *
+	 * @param {any} args Api arguments. Docs: https://wpengineapi.com.
+	 * @return {array} Returns api response.
+	 */
+	postWpeApi = async (...args) => {
+		args = new Helper().handleApiArgs(args);
+		const urlAxios = `https://api.wpengineapi.com/v1/${args}`;
+
+		const optionAxios = {
+			headers: {
+				Authorization:
+					'Basic ' + Buffer.from(this.user + ':' + this.pass).toString('base64'),
+			},
+		};
+
+		return await axios
+			.post(urlAxios, optionAxios)
+			.then((res) => res.data)
+			.catch((error) => {
+				throw new Error(error);
+			});
+	};
+
+	/**
 	 * Get WP Engine install ID by name.
 	 *
 	 * @param {string} name The WP Engine install Name.
@@ -123,28 +173,20 @@ class WpeApi {
 	};
 
 	/**
-	 * Get custom WP Engine data.
+	 * Creates a new WP Engine Backup by install ID.
 	 *
-	 * @param {any} args Api arguments. Docs: https://wpengineapi.com.
-	 * @return {array} Returns api data.
+	 * @param {string} id The WP Engine install ID.
+	 * @param {string} description Backup description.
+	 * @param {Array} notification_emails Backup notification email addresses.
+	 * @return {object} Returns backup response.
 	 */
-	getWpeApi = async (...args) => {
-		args = new Helper().handleApiArgs(args);
-		const urlAxios = `https://api.wpengineapi.com/v1/${args}`;
+	newBackup = async (id, description, notification_emails) => {
+		const res = await this.postWpeApi('installs', id, 'backups', {
+			description,
+			notification_emails,
+		});
 
-		const optionAxios = {
-			headers: {
-				Authorization:
-					'Basic ' + Buffer.from(this.user + ':' + this.pass).toString('base64'),
-			},
-		};
-
-		return await axios
-			.get(urlAxios, optionAxios)
-			.then((res) => res.data)
-			.catch((error) => {
-				throw new Error(error);
-			});
+		return res;
 	};
 }
 
