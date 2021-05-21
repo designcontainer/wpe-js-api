@@ -31,33 +31,6 @@ const wpe = new WpeApi(user, pass);
 
 ## API
 
-.getWpeApi
-
-Get custom WP Engine data.
-
-**Params**
-
--   `...args` **{Any}**: Api arguments. Docs: https://wpengineapi.com.
--   `returns` **{Array}**: Returns api data.
-
-**Examples**
-
-```js
-wpe.getWpeApi('installs', { limit: 10 })
-	.then((res) => {
-		console.log(res);
-	})
-	.catch((err) => console.error(`Error: ${err}`));
-```
-
-```js
-wpe.getWpeApi('installs', id, 'domains')
-	.then((res) => {
-		console.log(res);
-	})
-	.catch((err) => console.error(`Error: ${err}`));
-```
-
 .id
 
 Get WP Engine install ID by `name`.
@@ -191,4 +164,69 @@ Check if WP Engine install is a multisite environment by `id`.
 
 ```js
 wpe.isMultisite(id);
+```
+
+.newBackup
+
+Creates a new WP Engine Backup by `id`.
+
+**Params**
+
+-   `id` **{String}**: The WP Engine install ID.
+-   `description` **{String}**: Backup description.
+-   `notification_emails` **{Array}**: Backup notification email addresses.
+-   `returns` **{Boolean}**: Returns backup response.
+    **Example**
+
+```js
+wpe.newBackup(id, description, notification_emails);
+```
+
+.getWpeApi
+
+Get custom WP Engine data.
+
+**Params**
+
+-   `...args` **{Any}**: Api arguments. Docs: https://wpengineapi.com.
+-   `returns` **{Object}**: Returns api data.
+
+**Examples**
+
+```js
+wpe.getWpeApi('installs', { limit: 10 })
+	.then((res) => {
+		console.log(res);
+	})
+	.catch((err) => console.error(`Error: ${err}`));
+```
+
+```js
+wpe.getWpeApi('installs', id, 'domains')
+	.then((res) => {
+		console.log(res);
+	})
+	.catch((err) => console.error(`Error: ${err}`));
+```
+
+.postWpeApi
+
+Post custom WP Engine data.
+
+**Params**
+
+-   `...args` **{Any}**: Api arguments. Docs: https://wpengineapi.com.
+-   `returns` **{Object}**: Returns api response.
+
+**Examples**
+
+```js
+wpe.postWpeApi('installs', id, 'backups', {
+	description,
+	notification_emails,
+})
+	.then((res) => {
+		console.log(res);
+	})
+	.catch((err) => console.error(`Error: ${err}`));
 ```

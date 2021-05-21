@@ -20,12 +20,11 @@ class WpeApi {
 	 * Get custom WP Engine data.
 	 *
 	 * @param {any} args Api arguments. Docs: https://wpengineapi.com.
-	 * @return {array} Returns api data.
+	 * @return {object} Returns api data.
 	 */
 	getWpeApi = async (...args) => {
-		args = new Helper().handleApiArgs(args);
+		args = new Helper().handleGetApiArgs(args);
 		const urlAxios = `https://api.wpengineapi.com/v1/${args}`;
-
 		const optionAxios = {
 			headers: {
 				Authorization:
@@ -45,12 +44,13 @@ class WpeApi {
 	 * Post custom WP Engine data.
 	 *
 	 * @param {any} args Api arguments. Docs: https://wpengineapi.com.
-	 * @return {array} Returns api response.
+	 * @return {object} Returns api response.
 	 */
 	postWpeApi = async (...args) => {
-		args = new Helper().handleApiArgs(args);
-		const urlAxios = `https://api.wpengineapi.com/v1/${args}`;
+		args = new Helper().handlePostApiArgs(args);
 
+		const urlAxios = `https://api.wpengineapi.com/v1/${args.slug}`;
+		const formDataAxios = args.formData[0];
 		const optionAxios = {
 			headers: {
 				Authorization:
@@ -59,7 +59,7 @@ class WpeApi {
 		};
 
 		return await axios
-			.post(urlAxios, optionAxios)
+			.post(urlAxios, formDataAxios, optionAxios)
 			.then((res) => res.data)
 			.catch((error) => {
 				throw new Error(error);
@@ -173,7 +173,7 @@ class WpeApi {
 	};
 
 	/**
-	 * Creates a new WP Engine Backup by install ID.
+	 * Creates a new WP Engine Backup by ID.
 	 *
 	 * @param {string} id The WP Engine install ID.
 	 * @param {string} description Backup description.
@@ -185,7 +185,6 @@ class WpeApi {
 			description,
 			notification_emails,
 		});
-
 		return res;
 	};
 }

@@ -26,7 +26,7 @@ class Helper {
 	 * @param {any} args The API arguments
 	 * @return {string} Returns a formatted query string.
 	 */
-	handleApiArgs = (args) => {
+	handleGetApiArgs = (args) => {
 		let names = [];
 		let queries = [];
 		args.forEach((arg) => {
@@ -39,6 +39,30 @@ class Helper {
 		names = names.join('/');
 		queries = `?${querystring.encode(queries)}`;
 		return names + queries;
+	};
+
+	/**
+	 * Return a object from arguments.
+	 * Used for posting data to API requests / Axios.
+	 *
+	 * @param {any} args The API arguments
+	 * @return {string} Returns a an object containing slug and formData.
+	 */
+	handlePostApiArgs = (args) => {
+		let slug = [];
+		let formData = [];
+		args.forEach((arg) => {
+			if (this.isObject(arg) === false) {
+				slug.push(arg);
+			} else {
+				formData.push(arg);
+			}
+		});
+		slug = slug.join('/');
+		return {
+			slug,
+			formData,
+		};
 	};
 }
 
