@@ -1,11 +1,16 @@
 {
   "name": "dc-wpe-js-api",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A javascript wrapper for the WPE Api",
-  "main": "index.js",
+  "main": "./dist/bundle.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "build": "webpack -p",
+    "start": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -21,5 +26,14 @@
   "dependencies": {
     "axios": "^0.21.1"
   },
-  "type": "module"
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "webpack": "^5.38.1",
+    "webpack-cli": "3",
+    "webpack-dev-server": "^3.1.0"
+  }
 }
