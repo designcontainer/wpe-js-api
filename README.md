@@ -4,16 +4,14 @@ A simple JavaScript wrapper for getting data from your WP Engine installs using 
 
 ## Installing
 
-Using npm (coming soon):
-
 ```bash
-$ npm install dc-wpe-js-api
+$ npm install @designcontainer/dc-wpe-js-api
 ```
 
 ## Import
 
 ```js
-import WpeApi from 'dc-wpe-js-api';
+import WpeApi from '@designcontainer/dc-wpe-js-api';
 ```
 
 ## Initialize constructor
