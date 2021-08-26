@@ -1,5 +1,5 @@
 {
-  "name": "dc-wpe-js-api",
+  "name": "@designcontainer/dc-wpe-js-api",
   "version": "1.0.0",
   "description": "A javascript wrapper for the WPE Api",
   "main": "index.js",
