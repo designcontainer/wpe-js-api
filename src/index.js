@@ -27,7 +27,8 @@ class WpeApi {
 
 		// Check if we have a cached response that is not older than 10 seconds, return that.
 		const timeNow = generateTimestamp();
-		if (this.cache !== null && this.cache.args === args && timeNow - this.cache.time >= 10) {
+
+		if (this?.cache?.args === args && timeNow - this?.cache?.time < 10000) {
 			return this.cache.data;
 		}
 
