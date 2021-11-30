@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Import internal deps
-import { handleGetApiArgs, handlePostApiArgs, generateTimestamp } from './util.js';
+import { handleGetApiArgs, handlePostApiArgs, generateTimestamp } from './lib/util.js';
 
 /**
  * Class for communicating with the WP Engine API using JavaScript.

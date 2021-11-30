@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // Import WpeApi class
-import WpeApi from '../src/index.js';
+import WpeApi from '../index.js';
 
 // Setup WpeApi class
 const user = process.env.WPE_USER;

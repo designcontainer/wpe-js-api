@@ -1,13 +1,13 @@
 {
 	"name": "@designcontainer/dc-wpe-js-api",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"description": "A javascript wrapper for the WPE Api",
 	"main": "index.js",
 	"publishConfig": {
 		"access": "public"
 	},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "node tests/test.js",
 		"start": "node index.js"
 	},
 	"repository": {
