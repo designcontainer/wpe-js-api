@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/designcontainer/wpe-js-api#readme",
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.4"
   },
   "type": "module"
 }
