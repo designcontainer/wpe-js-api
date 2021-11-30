@@ -1,28 +1,25 @@
 {
-	"name": "dc-wpe-js-api",
-	"version": "1.1.0",
-	"description": "A javascript wrapper for the WPE Api",
-	"main": "src/index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "node index.js"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/designcontainer/wpe-js-api.git"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/designcontainer/wpe-js-api/issues"
-	},
-	"homepage": "https://github.com/designcontainer/wpe-js-api#readme",
-	"dependencies": {
-		"axios": "^0.21.1"
-	},
-	"type": "module",
-	"devDependencies": {
-		"dotenv": "^10.0.0"
-	}
+  "name": "@designcontainer/dc-wpe-js-api",
+  "version": "1.1.0",
+  "description": "A javascript wrapper for the WPE Api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/designcontainer/wpe-js-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/designcontainer/wpe-js-api/issues"
+  },
+  "homepage": "https://github.com/designcontainer/wpe-js-api#readme",
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
+  "type": "module"
 }
