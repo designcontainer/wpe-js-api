@@ -1,8 +1,7 @@
 // Import external deps
 import axios from 'axios';
 
-// Import internal deps
-import Helper from './classes/class-helper.js';
+import { handleGetApiArgs, handlePostApiArgs, generateTimestamp } from './util.js';
 
 /**
  * Class for communicating with the WP Engine API using JavaScript.
@@ -14,6 +13,7 @@ class WpeApi {
 	constructor(user, pass) {
 		this.user = user;
 		this.pass = pass;
+		this.cache = null;
 	}
 
 	/**
@@ -23,21 +23,34 @@ class WpeApi {
 	 * @return {object} Returns api data.
 	 */
 	getWpeApi = async (...args) => {
-		args = new Helper().handleGetApiArgs(args);
+		args = handleGetApiArgs(args);
+
+		// Check if we have a cached response that is not older than 10 seconds, return that.
+		const timeNow = generateTimestamp();
+		if (this.cache !== null && this.cache.args === args && timeNow - this.cache.time >= 10) {
+			return this.cache.data;
+		}
+
 		const urlAxios = `https://api.wpengineapi.com/v1/${args}`;
 		const optionAxios = {
 			headers: {
-				Authorization:
-					'Basic ' + Buffer.from(this.user + ':' + this.pass).toString('base64'),
+				Authorization: 'Basic ' + Buffer.from(this.user + ':' + this.pass).toString('base64'),
 			},
 		};
 
-		return await axios
-			.get(urlAxios, optionAxios)
-			.then((res) => res.data)
-			.catch((error) => {
-				throw new Error(error);
-			});
+		try {
+			const res = await axios.get(urlAxios, optionAxios);
+
+			this.cache = {
+				args: args,
+				data: res.data,
+				time: timeNow,
+			};
+
+			return res.data;
+		} catch (error) {
+			throw new Error(error);
+		}
 	};
 
 	/**
@@ -47,23 +60,21 @@ class WpeApi {
 	 * @return {object} Returns api response.
 	 */
 	postWpeApi = async (...args) => {
-		args = new Helper().handlePostApiArgs(args);
-
+		args = handlePostApiArgs(args);
 		const urlAxios = `https://api.wpengineapi.com/v1/${args.slug}`;
 		const formDataAxios = args.formData[0];
 		const optionAxios = {
 			headers: {
-				Authorization:
-					'Basic ' + Buffer.from(this.user + ':' + this.pass).toString('base64'),
+				Authorization: 'Basic ' + Buffer.from(this.user + ':' + this.pass).toString('base64'),
 			},
 		};
 
-		return await axios
-			.post(urlAxios, formDataAxios, optionAxios)
-			.then((res) => res.data)
-			.catch((error) => {
-				throw new Error(error);
-			});
+		try {
+			const res = axios.post(urlAxios, formDataAxios, optionAxios);
+			return res.data;
+		} catch (error) {
+			throw new Error(error);
+		}
 	};
 
 	/**
